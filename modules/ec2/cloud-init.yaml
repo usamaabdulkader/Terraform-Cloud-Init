@@ -1,0 +1,60 @@
+#cloud-config
+
+package_update: true
+package_upgrade: false
+
+packages:
+  - nginx
+  - curl
+
+write_files:
+  - path: /var/www/html/index.html
+    owner: root:root
+    permissions: "0644"
+    content: |
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Terraform Cloud-Init Deployment</title>
+        <style>
+          body {
+            font-family: Arial, sans-serif;
+            max-width: 760px;
+            margin: 80px auto;
+            padding: 0 24px;
+            background: #0f172a;
+            color: #e2e8f0;
+          }
+
+          .card {
+            background: #1e293b;
+            border-radius: 14px;
+            padding: 32px;
+            border: 1px solid #334155;
+          }
+
+          h1 {
+            color: #38bdf8;
+          }
+
+          code {
+            color: #86efac;
+          }
+        </style>
+      </head>
+      <body>
+        <main class="card">
+          <h1>EC2 deployed with Terraform + Cloud-Init</h1>
+          <p>This NGINX server was installed and configured automatically during first boot.</p>
+          <p>No SSH configuration steps were required after deployment.</p>
+          <p><strong>Provisioning:</strong> <code>Terraform user_data → AWS EC2 → cloud-init → NGINX</code></p>
+        </main>
+      </body>
+      </html>
+
+runcmd:
+  - systemctl enable nginx
+  - systemctl restart nginx
+  - [ sh, -c, "echo 'Cloud-init completed successfully at $(date)' >> /var/log/cloud-init-demo.log" ]
