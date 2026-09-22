@@ -1,3 +1,7 @@
+
+
+
+
 <table>
   <tr>
     <td width="70%">
@@ -14,6 +18,7 @@
 </table>
 
 <h4 align="center">Automate the deployment of a NGINX Web Server on AWS using Terraform.</h4>
+
 
 <p align="center">
 <img src="https://img.shields.io/badge/AWS-eu--west--2-232F3E?style=flat-square&logo=amazonaws&logoColor=FF9900" alt="AWS eu-west-2">
@@ -32,6 +37,14 @@
   <a href="#challenges-and-solutions">Challenges</a> •
   <a href="#key-learnings">Key Learnings</a>
 </p>
+
+![Architecture Diagram – Terraform](./Arch-Design.png)
+
+
+
+
+
+
 
 
 
